@@ -110,19 +110,17 @@ fetch('books.json') //path to the file with json data
 
             let button1 = document.createElement('button');
             button1.className = "show_more_btn";
-            button1.id = "show_more_btn_" + i; //კლასის სახელი შესაცვლელია
+            button1.id = "show_more_btn_" + i; 
             textInfo.append(button1);
             button1.innerHTML = "Show More";
             button1.onclick = showModal;
 
             let button2 = document.createElement('button');
-            button2.className = "add_to_bag_btn";  //კლასის სახელი შესაცვლელია
+            button2.className = "add_to_bag_btn"; 
             textInfo.append(button2);
             button2.innerHTML = "Add to bag";
 
-            //Show More-ზე დაჭერისას რა ტექსტიც გამოდის ღილაკის ტექსტი 
-
-        }
+       }
 
         function showModal() {
             let book_id = this.id.split('_')[3]
