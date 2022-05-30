@@ -1,4 +1,4 @@
-let container = document.createElement('div');
+let container = document.createElement("div");
 document.body.append(container);
 
 //Header
@@ -6,67 +6,144 @@ let header = document.createElement('header');
 container.append(header);
 
 let nav = document.createElement('nav');
-header.append(nav);
 nav.className = "navbar";
+header.append(nav);
 
 let ul = document.createElement('ul');
-nav.append(ul);
 ul.className = "navbar-texts";
+nav.append(ul);
 
 let li1 = document.createElement('li');
-ul.prepend(li1);
 li1.className = "navbar-text";
+ul.prepend(li1);
 
 let a1 = document.createElement('a');
-li1.append(a1);
 a1.title = "Book Catalog";
-a1.href = "library.html";
+a1.href = "index.html";
 a1.target = "_self";
 a1.innerHTML = "Book Catalog";
+li1.append(a1);
 
 let li2 = document.createElement('li');
-ul.append(li2);
 li2.className = "navbar-text";
+ul.append(li2);
 
 let a2 = document.createElement('a');
-li2.append(a2);
 a2.title = "about-us";
-a2.href = "library.html";
 a2.innerHTML = "About Us";
 a2.href = "#about-us";
+li2.append(a2);
 
 let form = document.createElement('form');
-nav.append(form);
 form.className = "input-With-Icon";
+nav.append(form);
 
 let form_i = document.createElement('i');
 form_i.className = "fas fa-search";
 form.append(form_i);
 
 let input = document.createElement('input');
-form.append(input);
 input.type = "text";
 input.placeholder = "Search Books Here..";
 input.id = "search";
 input.alt = "search";
 input.title = "search";
+form.append(input);
 
-let order_button = document.createElement('button'); //order form
-form.before(order_button);
+//Order 
+let order_button = document.createElement('button');
 order_button.type = "button";
 order_button.className = "order";
+order_button.id = "myBtn";
 order_button.title = "Order";
+form.before(order_button);
 
 let order_a = document.createElement('a');
 order_button.append(order_a);
-order_a.title = "Book Catalog";
-order_a.href = "Order.html";
-order_a.target = "_self";
+order_a.target = "#";
 
 let button_i = document.createElement('i');
 button_i.className = "fas fa-shopping-cart";
-button_i.innerHTML = "Order";
 order_button.append(button_i);
+
+let order_span1 = document.createElement('span');
+order_span1.innerText = "Order(";
+button_i.append(order_span1);
+
+let order_span2 = document.createElement('span');
+order_span2.innerText = "0";
+order_span2.id = "order_span";
+button_i.append(order_span2);
+
+let order_span3 = document.createElement('span');
+order_span3.innerText = ")";
+button_i.append(order_span3);
+
+//The Modal
+let myModal = document.createElement("div");
+myModal.className = "modal1";
+myModal.id = "myModal";
+container.append(myModal);
+
+let modalContent = document.createElement("div");
+modalContent.className = "modal-content";
+myModal.append(modalContent);
+
+let modalHeader = document.createElement("div");
+modalHeader.className = "modal-header";
+modalContent.append(modalHeader);
+
+let modalClose = document.createElement("span");
+modalClose.className = "close";
+modalClose.innerHTML = "&times;";
+modalHeader.append(modalClose);
+
+let modalh2 = document.createElement("h2");
+modalh2.innerHTML = "Shopping Cart Summary: ";
+modalHeader.append(modalh2);
+let modalsumspan = document.createElement("span");
+modalsumspan.id = "modal_sum_span";
+modalsumspan.innerText = "0";
+modalh2.append(modalsumspan);
+let modalusdspan = document.createElement("span");
+modalusdspan.innerText = "$";
+modalh2.append(modalusdspan);
+
+let modalBody = document.createElement("div");
+modalBody.className = "modal-body";
+modalContent.append(modalBody);
+
+let modalFooter = document.createElement("div");
+modalFooter.className = "modal-footer";
+modalContent.append(modalFooter);
+
+let modalFooterBtn = document.createElement("a");
+modalFooterBtn.innerText = "Confirm Order";
+modalFooter.append(modalFooterBtn);
+modalFooterBtn.className = "modalFooterBtn";
+modalFooterBtn.href = "formpage/form.html";
+modalFooterBtn.target = "_blank";
+
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 //Main
 let main = document.createElement('main');
@@ -110,18 +187,49 @@ fetch('books.json') //path to the file with json data
 
             let button1 = document.createElement('button');
             button1.className = "show_more_btn";
-            button1.id = "show_more_btn_" + i; //კლასის სახელი შესაცვლელია
+            button1.id = "show_more_btn_" + i; //Show more button
             textInfo.append(button1);
             button1.innerHTML = "Show More";
             button1.onclick = showModal;
 
             let button2 = document.createElement('button');
-            button2.className = "add_to_bag_btn";  //კლასის სახელი შესაცვლელია
+            button2.className = "add_to_bag_btn";
+            button2.id = "add_to_bag_btn_" + i; //Add to bag button
             textInfo.append(button2);
             button2.innerHTML = "Add to bag";
+            button2.onclick = addToOrders;
 
-            //Show More-ზე დაჭერისას რა ტექსტიც გამოდის ღილაკის ტექსტი 
+        }
+        function addToOrders() {
+            let book_id = this.id.split('_')[4];
+            let order_book = all_books[book_id];
+            let { author, price, title } = order_book;
+            let books_counter = document.getElementById('order_span');
+            let added_book_counter = parseInt(books_counter.innerText) + 1;
+            books_counter.innerText = added_book_counter; //add num to bag
+            let add_to_order = document.getElementsByClassName("modal-body")[0];
+            let add_order_book = document.createElement('p');
+            add_order_book.className = price;
+            add_to_order.append(add_order_book);
+            add_order_book.innerHTML = `<strong>${author}</strong> | ${title} | <strong>${price}$</strong> - <strong><span class="remove_book_from_order">[x]</span></strong>`;
+            let each_order_book_close = document.getElementsByClassName("remove_book_from_order");
+            for (i = 0; i < each_order_book_close.length; i++) {
+                each_order_book_close[i].onclick = removePriceFromOrder;
+            }
+            let modal_sum_span = document.getElementById("modal_sum_span");
+            let total_price_in_order = parseInt(modal_sum_span.innerText);
+            modal_sum_span.innerText = total_price_in_order + price;
+        }
 
+        function removePriceFromOrder() {
+            let books_counter = document.getElementById('order_span');
+            let removed_book_counter = parseInt(books_counter.innerText) - 1;
+            books_counter.innerText = removed_book_counter; //add num to bag
+            let modal_sum_span = document.getElementById("modal_sum_span");
+            let total_price_in_order = parseInt(modal_sum_span.innerText);
+            let price_to_remove = this.parentNode.parentNode.className;
+            modal_sum_span.innerText = total_price_in_order - price_to_remove;
+            this.parentNode.parentNode.remove();
         }
 
         function showModal() {
@@ -206,9 +314,7 @@ fetch('books.json') //path to the file with json data
 
             document.body.style.overflow = "visible";
         }
-
         // end of modal
-
     });
 
 //Footer
@@ -338,5 +444,3 @@ rights.className = "rights-info";
 let rights_p = document.createElement('p');
 rights.append(rights_p);
 rights_p.innerHTML = "All rights reserved © Online Library 2022";
-
-
