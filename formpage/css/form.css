@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("images/form-background.jpg");
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+a {
+    font-size: 1.5rem;
+}
+
+.form {
+    width: 35rem;
+    margin: 0.7rem auto 0;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    border: 1px solid #c0c0c0;
+    background-color: #205ca3;
+    ;
+}
+
+.form-title {
+    width: max-content;
+    margin: 0 auto 1.2rem;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.7rem;
+}
+
+#form>div:nth-child(6) {
+    margin-bottom: 1.3rem;
+}
+
+.field>input {
+    width: 20rem;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid #c0c0c0;
+    border-radius: 0.2rem;
+    padding: 0.15rem 0.25rem;
+    outline: none;
+}
+
+label>span {
+    color: #ffffff;
+}
+
+.payment-type>p>span {
+    color: #ffffff;
+}
+
+.italic {
+    font-style: italic;
+}
+
+#form>div:nth-child(7),
+#form>div:nth-child(8) {
+    margin-bottom: 1rem;
+}
+
+#form>div:nth-child(7) p,
+#form>div:nth-child(8) p {
+    margin-bottom: 0.30rem;
+}
+
+.button {
+    width: max-content;
+    margin: 0.4rem auto;
+}
+
+.complete-button {
+    color: white;
+    background-color: #205ca3;
+    border: 3px solid #c0c0c0;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    cursor: not-allowed;
+}
+
+.active {
+    /* from hereeee */
+    opacity: 1;
+    cursor: pointer;
+}
+
+.back {
+
+    margin: 1.2rem 0 0 1rem;
+}
+
+.back a {
+    text-decoration: none;
+    margin-top: 1rem;
+    color: black;
+}
+
+/* summerise */
+body {
+    position: relative;
+}
+
+.summerise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    z-index: 100;
+    position: fixed;
+    transition: all 200ms ease-in-out;
+}
+
+.summerise-popup {
+    color: #000;
+    background-color: #fff;
+    width: 27rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    position: relative;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.summerise-popup i {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.summerise-popup h1 {
+    margin-bottom: 0.8rem;
+}
+
+.inactive {
+    display: none;
+}
