@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/form.css" />
+    <script src="scripts/4809f3b02f.js" crossorigin="anonymous"></script>
+    <title>Order form</title>
+</head>
+
+<body>
+    <div>
+        <a href="index.html"><img src="images/download.jpg" alt="" height="80px" background-position="center"
+                background-attachment=fixed></a>
+    </div>
+
+    <div class="form">
+        <h2 class="form-title">Order Form</h1>
+            <form action="" method="get" id="form">
+                <div class="field">
+                    <label for="name">Name <span>*</span></label>
+                    <input type="text" id="name" minlength="4" pattern="^[a-zA-Z]+$" title="Please fill in this field"
+                        required />
+                </div>
+                <div class="field">
+                    <label for="surname">Surname <span>*</span></label>
+                    <input type="text" id="surname" minlength="5" pattern="^[a-zA-Z]+$"
+                        title="Please fill in this field" required />
+                </div>
+                <div class="field">
+                    <label for="date">Delivery date <span>*</span></label>
+                    <input type="date" id="date" required />
+                </div>
+                <div class="field">
+                    <label for="street">Street <span>*</span></label>
+                    <input type="text" id="street" minlength="5" pattern="^[a-zA-Z0-9]+$"
+                        title="Please fill in this field" required />
+                </div>
+                <div class="field">
+                    <label for="house-number">House number <span>*</span></label>
+                    <input type="number" id="house-number" pattern="^[0-9]*$" required />
+                </div>
+                <div class="field">
+                    <label for="flat-number">Flat number <span>*</span></label>
+                    <input type="text" id="flat-number" pattern="^[0-9-]*$" title="Please fill in this field"
+                        required />
+                </div>
+                <div class="payment-type">
+                    <p>Payment type <span>*</span></p>
+                    <div>
+                        <input type="radio" id="cash" name="payment-type" value="Cash" required />
+                        <label for="cash" class="italic">Cash</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="card" name="payment-type" value="Card" required />
+                        <label for="card" class="italic">Card</label>
+                    </div>
+                </div>
+                <div class="choose-gifts">
+                    <p>Choose 2 gifts</p>
+                    <div>
+                        <input type="checkbox" name="pack" id="pack" />
+                        <label for="gift" class="italic">Pack as a gift</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="postcard" id="postcard" />
+                        <label for="postcard" class="italic">Add postcard</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="discount" id="discount" />
+                        <label for="discount" class="italic">Provide 2% discount to the next time</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="pen-pencil" id="pen-pencil" />
+                        <label for="pencil" class="italic">Branded pen or pencil</label>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" class="complete-button">Complete</button>
+                </div>
+            </form>
+    </div>
+    <div class="summerise inactive">
+        <div class="summerise-popup">
+            <h1 class="summerise-title">Order created</h1>
+            <h3>Customer:</h3> <span class="sum-name"></span> <span class="sum-surname"></span>
+            <h3>Delivery address:</h3> <span class="sum-street"></span> street, house <span
+                class="sum-house-number"></span>, flat <span class="sum-flat-number"></span>
+            <h3>Delivery date:</h3> <span class="sum-delivery-date"></span>
+            <h3>Payment type:</h3> <span class="sum-payment-type"></span>
+            <i class="fa-regular fa-circle-xmark summerise-exit"></i>
+        </div>
+    </div>
+    <script src="scripts/form.js"></script>
+</body>
+
+</html>
