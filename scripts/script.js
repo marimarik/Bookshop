@@ -198,7 +198,7 @@ fetch('books.json') //path to the file with json data
             textInfo.append(button2);
             button2.innerHTML = "Add to bag";
             button2.onclick = addToOrders;
-
+          
         }
         function addToOrders() {
             let book_id = this.id.split('_')[4];
